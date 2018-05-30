@@ -11,7 +11,7 @@ public class Main {
 		FileData.getData("data.txt");
 
 		TaskManager.modifiedDurations();
-		TaskManager.assingCollections();
+		TaskManager.populateN();
 
 		TaskManager.setSchedules();
 

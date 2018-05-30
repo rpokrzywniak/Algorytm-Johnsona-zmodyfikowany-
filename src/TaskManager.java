@@ -34,7 +34,7 @@ public class TaskManager {
 		}
 	}
 
-	public static void assingCollections() {
+	public static void populateN() {
 		for (Task task : tasks) {
 			if (task.getT1() < task.getT2())
 				n1.addTasks(task);
@@ -95,10 +95,41 @@ public class TaskManager {
 		wait = 0;
 		for (Task task : schedule) {
 			for (int i = 0; i < task.getDurations().get(2); i++) {
-				if (MachineManager.machines.get(0).getSchedule().size() > wait // jezeli scheldue m1 i m2 sa krotsze od czasu aktualnego dla m3, to wypelniamy je 0 
+				if (MachineManager.machines.get(0).getSchedule().size() > wait // jezeli
+																				// scheldue
+																				// m1
+																				// i
+																				// m2
+																				// sa
+																				// krotsze
+																				// od
+																				// czasu
+																				// aktualnego
+																				// dla
+																				// m3,
+																				// to
+																				// wypelniamy
+																				// je
+																				// 0
 						&& MachineManager.machines.get(1).getSchedule().size() > wait) {
-					if (MachineManager.machines.get(0).getSchedule().get(wait).getTaskNumber() == task.getTaskNumber() //idziemy po timeline, gdy task w m3 jest rozny od m1 i m2 mozna dodac do m3
-							|| MachineManager.machines.get(1).getSchedule().get(wait).getTaskNumber() == task		   
+					if (MachineManager.machines.get(0).getSchedule().get(wait).getTaskNumber() == task.getTaskNumber() // idziemy
+																														// po
+																														// timeline,
+																														// gdy
+																														// task
+																														// w
+																														// m3
+																														// jest
+																														// rozny
+																														// od
+																														// m1
+																														// i
+																														// m2
+																														// mozna
+																														// dodac
+																														// do
+																														// m3
+							|| MachineManager.machines.get(1).getSchedule().get(wait).getTaskNumber() == task
 									.getTaskNumber()) {
 						addTaskToMachine(2, new Task(0));
 						i--;
