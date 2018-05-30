@@ -54,13 +54,16 @@ public class FileData {
 				ArrayList<Integer> durations = new ArrayList<Integer>();
 				int max=0;
 				int machine=0;
+				int prevMachine=0;
 				for (int j = 1; j <= MachineManager.machines.size(); j++) {
 					int duration = Integer.parseInt(fileTasks.get(i).get(j));
 					if (max < duration) {
 						max = duration;
-						machine=j;						
+						machine=j;		
 					}
 					if(machine==2)Main.error("Machine 2 is dominating 1 and 3");
+					if(j>1 && machine!=prevMachine) Main.error("Machine 2 is dominated by different machines");
+					prevMachine=machine;
 					durations.add(duration);
 				}
 				TaskManager.tasks.get(taskNumber - 1).setDurations(durations);
